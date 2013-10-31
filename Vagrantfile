@@ -1,13 +1,3 @@
-def local_cache(box_name, purpose)
-  cache_dir = File.join(File.expand_path(Vagrant::Environment::DEFAULT_HOME),
-                        'cache',
-                        purpose,
-                        box_name)
-  partial_dir = File.join(cache_dir, 'partial')
-  FileUtils.mkdir_p(partial_dir) unless File.exists? partial_dir
-  cache_dir
-end
-
 Vagrant.configure("2") do |config|
   config.ssh.forward_x11 = true # useful since some audio testing programs use x11
   config.vm.box = "precise64"
@@ -18,9 +8,6 @@ Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, '--audio', 'coreaudio', '--audiocontroller', 'hda'] # choices: hda sb16 ac97
   end
-
-  # apt package caching
-  config.vm.synced_folder (local_cache config.vm.box, 'apt'), "/var/cache/apt/archives/"
 
 end
 
