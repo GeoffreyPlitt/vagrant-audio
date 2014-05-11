@@ -12,11 +12,11 @@ Vagrant.configure("2") do |config|
 end
 
 $BOOTSTRAP_SCRIPT = <<EOF
-	set -e # Stop on any error
+  set -e # Stop on any error
 
-	# --------------- SETTINGS ----------------
-	# Other settings
-	export DEBIAN_FRONTEND=noninteractive
+  # --------------- SETTINGS ----------------
+  # Other settings
+  export DEBIAN_FRONTEND=noninteractive
 
   sudo apt-get update
 
