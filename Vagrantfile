@@ -7,6 +7,7 @@ Vagrant.configure("2") do |config|
   # enable audio drivers on VM settings
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, '--audio', 'coreaudio', '--audiocontroller', 'hda'] # choices: hda sb16 ac97
+    # vb.customize ["modifyvm", :id, '--audio', 'dsound', '--audiocontroller', 'ac97'] # Windows
   end
 
 end
