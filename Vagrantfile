@@ -1,7 +1,6 @@
 Vagrant.configure("2") do |config|
   config.ssh.forward_x11 = true # useful since some audio testing programs use x11
-  config.vm.box = "precise64"
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.box = "hashicorp/precise64"
   config.vm.provision :shell, :inline => $BOOTSTRAP_SCRIPT # see below
 
   # enable audio drivers on VM settings
